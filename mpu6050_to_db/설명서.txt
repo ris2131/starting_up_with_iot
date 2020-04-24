@@ -1,3 +1,9 @@
+*Wiring mpu6050 to esp32*
+VCC to 3V3
+GND to GND
+SCL to G22
+SDA to G21
+
 *mpu6050_to_db*
 1. https://github.com/tockn/MPU6050_tockn 에서 "clone or download" 로 Download ZIP 실행
 2. 압축 풀고 MPU6050_tockn(뒤에 -master- 지우기) 폴더를 arduino/libraries에 붙여넣기 
