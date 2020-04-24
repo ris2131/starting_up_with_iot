@@ -1,0 +1,28 @@
+*mpu6050_to_db*
+1. https://github.com/tockn/MPU6050_tockn 에서 "clone or download" 로 Download ZIP 실행
+2. 압축 풀고 MPU6050_tockn(뒤에 -master- 지우기) 폴더를 arduino/libraries에 붙여넣기 
+3. mpu6050_to_db.ino 실행하기 (와이파이정보 및 url만 바꾸면 됨)
+
+*mpu6050 연결 확인용*
+해당 아두이노 코드 실행시 mpu6050과 정상연결 되면 1개 디바이스가 잘 연결된 output 얻을 수 있다.
+
+*mpu6050 데이터 확인용*
+mpu6050센서가 수집한 가속도, 자이로, 온도의 모든 정보를 확인할 수 있다.
+
+*mpu6050_server.js*
+센서로 받은 데이터를 db로 옮기는 코드
+
+*db 생성 코드* root에 진입 후 
+create database mpu6050;
+use mpu6050;
+create table acc (
+id int(10) unsigned,
+accX decimal(6,3),
+accY decimal(6,3),
+accZ decimal(6,3),
+time TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
+GRANT ALL PRIVILEGES ON mydb.* TO 'me'@'localhost';
+FLUSH PRIVILEGES;
+
+*샘플 url*
+http://54.146.59.56:8000/data?id=1&accX=1.2&accY=4.2&accZ=0.0
