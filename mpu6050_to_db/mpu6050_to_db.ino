@@ -1,6 +1,6 @@
 #include <MPU6050_tockn.h>
 #include <Wire.h>
-#include <WiFi.h>
+#include <WiFiManager.h>
 #include <HTTPClient.h>
 #define USE_SERIAL Serial
 
@@ -8,31 +8,29 @@ MPU6050 mpu6050(Wire);
 
 long timer = 0;
 
-const char* ssid     = "와이파이_이름";    // 연결할 SSID
-const char* password = "와이파이_비밀번호";     // 연결할 SSID의 비밀번호
 char url[100];
 
 void setup(void)
 {
 
   Serial.begin(115200);
-    
-  WiFi.begin(ssid, password);
- 
-  // 와이파이망에 연결
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.print(".");
-  }
-  // Start up the library
+     WiFi.mode(WIFI_STA);
+    Serial.begin(115200);
+    WiFiManager wm;
+    bool res;
+    res = wm.autoConnect("AutoConnectAP","password");
+    if(!res) {
+        Serial.println("Failed to connect");
+        // ESP.restart();
+    } 
+    else {
+        Serial.println("connected...yeey :)");
+    }
   Wire.begin(21, 22);
   mpu6050.begin();
   mpu6050.calcGyroOffsets(true);
 }
 
-/*
- * Main function, get and show the temperature
- */
 void loop(void)
 { 
   mpu6050.update();

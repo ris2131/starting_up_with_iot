@@ -5,9 +5,15 @@ SCL to G22
 SDA to G21
 
 *mpu6050_to_db*
-1. https://github.com/tockn/MPU6050_tockn 에서 "clone or download" 로 Download ZIP 실행
-2. 압축 풀고 MPU6050_tockn(뒤에 -master- 지우기) 폴더를 arduino/libraries에 붙여넣기 
-3. mpu6050_to_db.ino 실행하기 (와이파이정보 및 url만 바꾸면 됨)
+1-1. https://github.com/tockn/MPU6050_tockn 에서 "clone or download" 로 Download ZIP 실행
+1-2. https://github.com/tzapu/WiFiManager/tree/development#how-it-works 에서 "clone or download" 로 Download ZIP 실행
+2. 압축 풀고 각 폴더를 arduino/libraries에 붙여넣기 (폴더 이름에서 -master-는 지운다.)
+3. mpu6050_to_db.ino 실행하기
+
+*ESP32와 와이파이 연결방법*
+1.  mpu6050_to_db.ino를 처음 실행 했다면 ESP32가 자체적으로 만든 AP인 "AutoConnectAP" 라는 와이파이가 생성될 것이다. 
+비밀번호 "password"를 입력하고 접속하자. (주위에 비밀번호가 없는 와이파이가 있으면 바로 연결되기도 한다.)
+2. "AutoConnectAP" 와이파이에 접속하면 주변 와이파이 정보를 보여주는 사이트가 팝업창으로 뜬다. 연결하고 싶은 와이파이 선택 후 비밀번호를 입력하면 ESP32와 선택한 와이파이를 연결시킬 수 있다
 
 *mpu6050 연결 확인용*
 해당 아두이노 코드 실행시 mpu6050과 정상연결 되면 1개 디바이스가 잘 연결된 output 얻을 수 있다.
