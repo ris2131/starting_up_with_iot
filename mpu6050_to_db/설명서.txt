@@ -26,6 +26,11 @@ mpu6050센서가 수집한 가속도, 자이로, 온도의 모든 정보를 확�
 데이터는 1초에 10개씩 받고 있습니다.
 이 코드와 graph.html을 같은 경로에 두고 실행하면 됩니다.
 
+*샘플 url*
+http://54.146.59.56:8000/data?id=1&accX=1.2&accY=4.2&accZ=0.0 => id=1 인 acc 데이터 삽입
+http://54.146.59.56:8000/watchdog?id=2 => id=2 인 데이터를 그래프화하여 사용자에게 보여줌
+http://54.146.59.56:8000/db?id=2 => id=2 인 데이터를 json 형태로 사용자에게 보여줌
+
 *db 생성 코드* root에 진입 후 
 create database mpu6050;
 use mpu6050;
@@ -38,5 +43,3 @@ time TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
 GRANT ALL PRIVILEGES ON mydb.* TO 'me'@'localhost';
 FLUSH PRIVILEGES;
 
-*샘플 url*
-http://54.146.59.56:8000/data?id=1&accX=1.2&accY=4.2&accZ=0.0
