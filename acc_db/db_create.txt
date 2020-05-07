@@ -1,6 +1,0 @@
-create table acc (
-id decimal(4,0) unsigned,
-accX float(8,3),
-accY float(8,3),
-accZ float(8,3),
-time TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
